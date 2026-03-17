@@ -99,10 +99,91 @@ export default function SharePage() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-green-600 border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-stone-400 font-medium">
+      <div
+        className="min-h-screen flex items-center justify-center"
+        style={{ background: "#0d1f13" }}
+      >
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+          .shelf-loader-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            stroke-width: 2;
+            letter-spacing: -4px;
+            stroke: #d1fae5;
+            animation: 3.5s infinite alternate shelf-animate-stroke;
+          }
+
+          .shelf-loader-dot {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            fill: #16a34a;
+            stroke: #16a34a;
+            animation: 3.5s infinite alternate shelf-animate-dot;
+          }
+
+          @keyframes shelf-animate-stroke {
+            0% {
+              fill: transparent;
+              stroke: #d1fae5;
+              stroke-width: 3;
+              stroke-dashoffset: 25%;
+              stroke-dasharray: 0 32%;
+            }
+            50% {
+              fill: transparent;
+              stroke: #d1fae5;
+              stroke-width: 3;
+            }
+            80%, 100% {
+              fill: #d1fae5;
+              stroke: transparent;
+              stroke-width: 0;
+              stroke-dashoffset: -25%;
+              stroke-dasharray: 32% 0;
+            }
+          }
+
+          @keyframes shelf-animate-dot {
+            0%, 60% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        `}</style>
+
+        <div className="flex flex-col items-center gap-6">
+          <svg viewBox="0 0 420 120" style={{ width: "18rem" }}>
+            <text
+              x="50%"
+              y="55%"
+              dy=".32em"
+              textAnchor="middle"
+              className="shelf-loader-text"
+            >
+              ShelfDeck
+            </text>
+            <text
+              x="50%"
+              y="55%"
+              dy=".32em"
+              dx="3.6em"
+              textAnchor="middle"
+              className="shelf-loader-dot"
+            >
+              .
+            </text>
+          </svg>
+          <p
+            style={{
+              color: "#4ade80",
+              fontSize: "0.75rem",
+              letterSpacing: "0.1em",
+              fontFamily: "sans-serif",
+              opacity: 0.6,
+            }}
+          >
             Loading collection…
           </p>
         </div>
