@@ -99,33 +99,53 @@ export default function SharePage() {
 
   if (loading)
     return (
-      <div
-        className="min-h-screen flex items-center justify-center"
-        style={{ background: "#0d1f13" }}
-      >
+      <>
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-          .shelf-loader-text {
+          .sd-loader {
+            position: fixed;
+            inset: 0;
+            background-color: #0a1a0f;
+            display: grid;
+            place-content: center;
+            gap: 1.5rem;
+          }
+
+          .sd-loader svg {
+            width: 22rem;
+          }
+
+          .sd-loader svg text {
             font-family: 'Poppins', sans-serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 700;
             stroke-width: 2;
-            letter-spacing: -4px;
-            stroke: #d1fae5;
-            animation: 3.5s infinite alternate shelf-animate-stroke;
+            letter-spacing: -6px;
           }
 
-          .shelf-loader-dot {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
+          .sd-loader .sd-text {
+            stroke: #d1fae5;
+            animation: 4s infinite alternate sd-animate-stroke;
+          }
+
+          .sd-loader .sd-dot {
             fill: #16a34a;
             stroke: #16a34a;
-            animation: 3.5s infinite alternate shelf-animate-dot;
+            animation: 4s infinite alternate sd-animate-dot;
           }
 
-          @keyframes shelf-animate-stroke {
+          .sd-loader .sd-sub {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            fill: #4ade80;
+            opacity: 0.5;
+            animation: 4s infinite alternate sd-animate-dot;
+          }
+
+          @keyframes sd-animate-stroke {
             0% {
               fill: transparent;
               stroke: #d1fae5;
@@ -147,47 +167,42 @@ export default function SharePage() {
             }
           }
 
-          @keyframes shelf-animate-dot {
+          @keyframes sd-animate-dot {
             0%, 60% { opacity: 0; }
-            100% { opacity: 1; }
+            100%     { opacity: 1; }
           }
         `}</style>
 
-        <div className="flex flex-col items-center gap-6">
-          <svg viewBox="0 0 420 120" style={{ width: "18rem" }}>
+        <div className="sd-loader">
+          <svg viewBox="0 0 500 175">
+            {/* Main animated text */}
             <text
               x="50%"
-              y="55%"
+              y="48%"
               dy=".32em"
               textAnchor="middle"
-              className="shelf-loader-text"
+              className="sd-text"
             >
               ShelfDeck
             </text>
+            {/* Animated dot — dx nudges it to sit after the last letter */}
             <text
               x="50%"
-              y="55%"
+              y="48%"
               dy=".32em"
-              dx="3.6em"
+              dx="3.05em"
               textAnchor="middle"
-              className="shelf-loader-dot"
+              className="sd-dot"
             >
               .
             </text>
+            {/* Subtitle */}
+            <text x="50%" y="82%" textAnchor="middle" className="sd-sub">
+              Loading collection
+            </text>
           </svg>
-          <p
-            style={{
-              color: "#4ade80",
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-              fontFamily: "sans-serif",
-              opacity: 0.6,
-            }}
-          >
-            Loading collection…
-          </p>
         </div>
-      </div>
+      </>
     );
 
   if (!data)
