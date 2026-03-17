@@ -346,7 +346,7 @@ export default function SharePage() {
               navigator.clipboard.writeText(JSON.stringify(data.categories));
               alert("Copied data — open extension and import");
             }}
-            className="flex-shrink-0 flex items-center gap-1.5 bg-green-600 hover:bg-green-700 active:scale-95 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-150"
+            className="flex-shrink-0 flex items-center gap-1.5 text-[#d1fae5] bg-[#0a1a0f] hover:bg-green-900 active:scale-95  text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-150"
           >
             <svg
               width="12"
