@@ -70,6 +70,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import logo from "../assets/shelfdeck-logo.png";
 
 export default function SharePage() {
   const { id } = useParams();
@@ -231,25 +232,11 @@ export default function SharePage() {
       <header className="bg-white border-b border-stone-200 shadow-sm">
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-stone-900 flex items-center justify-center flex-shrink-0">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="3" width="7" height="18" rx="1" />
-                <rect x="10.5" y="6" width="5" height="15" rx="1" />
-                <rect x="17" y="4" width="5" height="17" rx="1" />
-              </svg>
-            </div>
-            <span className="text-sm font-bold text-green-700 tracking-tight">
-              ShelfDeck
-            </span>
+            <img
+              src={logo}
+              alt="ShelfDeck Logo"
+              className="h-5 w-auto object-contain"
+            />
           </div>
           <span className="text-xs text-stone-400 font-medium">
             Shared Collection
